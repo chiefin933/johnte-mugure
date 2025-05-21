@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JOHNTE MUGURE | Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>JOHNTE MUGURE</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="Johnte_Muchikuri_Resume_Updated.pdf" download class="resume-btn">Download Resume</a>
+      <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+    </nav>
+  </header>
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p>
+      Hi, I'm Johnte Mugure, a passionate web developer and tech enthusiast. I specialize in building elegant, user-friendly websites and applications using modern technologies. I love solving problems, learning new skills, and turning ideas into digital experiences. Let's create something amazing together!
+    </p>
+  </section>
+  <section id="skills" class="fade-in">
+    <h2>Skills</h2>
+    <div class="skills-list">
+      <div class="skill">
+        <span>HTML5</span>
+        <div class="skill-bar"><div class="skill-level" style="width:90%"></div></div>
+      </div>
+      <div class="skill">
+        <span>CSS3</span>
+        <div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
+      </div>
+      <div class="skill">
+        <span>JavaScript</span>
+        <div class="skill-bar"><div class="skill-level" style="width:80%"></div></div>
+      </div>
+      <div class="skill">
+        <span>React</span>
+        <div class="skill-bar"><div class="skill-level" style="width:75%"></div></div>
+      </div>
+      <div class="skill">
+        <span>Git & GitHub</span>
+        <div class="skill-bar"><div class="skill-level" style="width:80%"></div></div>
+      </div>
+    </div>
+  </section>
+  <section id="projects" class="fade-in">
+    <h2>Projects</h2>
+    <div class="project-cards">
+      <div class="project-card" data-title="E-commerce Website" data-details="A full-featured online store built with HTML, CSS, and JavaScript. Includes product listings, shopping cart, and secure checkout functionality." data-link="#">
+        <h3>E-commerce Website</h3>
+        <p>
+          A full-featured online store built with HTML, CSS, and JavaScript. Includes product listings, shopping cart, and secure checkout functionality.
+        </p>
+        <a href="#" class="details-btn">View Details</a>
+      </div>
+      <div class="project-card" data-title="Portfolio Website" data-details="My personal portfolio showcasing my skills, projects, and contact information. Designed with a modern, elegant tech theme." data-link="#">
+        <h3>Portfolio Website</h3>
+        <p>
+          My personal portfolio showcasing my skills, projects, and contact information. Designed with a modern, elegant tech theme.
+        </p>
+        <a href="#" class="details-btn">View Details</a>
+      </div>
+      <div class="project-card" data-title="Blog Platform" data-details="A responsive blog platform where users can read and share articles. Features include user authentication, post creation, and comments." data-link="#">
+        <h3>Blog Platform</h3>
+        <p>
+          A responsive blog platform where users can read and share articles. Features include user authentication, post creation, and comments.
+        </p>
+        <a href="#" class="details-btn">View Details</a>
+      </div>
+      <div class="project-card" data-title="Task Manager App" data-details="A productivity app to manage daily tasks and to-dos. Built with a focus on usability and clean design." data-link="#">
+        <h3>Task Manager App</h3>
+        <p>
+          A productivity app to manage daily tasks and to-dos. Built with a focus on usability and clean design.
+        </p>
+        <a href="#" class="details-btn">View Details</a>
+      </div>
+    </div>
+  </section>
+  <section id="contact" class="fade-in">
+    <h2>Contact</h2>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+      <div id="form-status"></div>
+    </form>
+  </section>
+  <footer>
+    <div class="footer-social-links">
+      <a href="https://github.com/chiefin933/" target="_blank" rel="noopener" aria-label="GitHub">
+        <img src="github.svg" alt="GitHub">
+      </a>
+      <a href="https://www.linkedin.com/in/chiefinpaapz/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <img src="linkedin.svg" alt="LinkedIn">
+      </a>
+    </div>
+    <p>&copy; 2025 Johnte Mugure</p>
+  </footer>
+
+  <section id="testimonials" class="fade-in">
+    <h2>Testimonials</h2>
+    <div class="testimonial">
+      <p>"Johnte is a talented developer who consistently delivers high-quality work. His attention to detail and problem-solving skills are impressive!"</p>
+      <cite>- Client Name</cite>
+    </div>
+    <div class="testimonial">
+      <p>"Working with Johnte was a great experience. He communicated effectively and met all deadlines. Highly recommend!"</p>
+      <cite>- Client Name</cite>
+    </div>
+  </section>
+
+  <!-- Project Details Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3 id="modal-title"></h3>
+      <p id="modal-details"></p>
+      <a id="modal-link" href="#" target="_blank">View Project</a>
+    </div>
+  </div>
+
+  <script>
+    // Dark/Light mode toggle with animation
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    let darkMode = true;
+    toggleBtn.addEventListener('click', () => {
+      darkMode = !darkMode;
+      body.classList.toggle('light-mode');
+      toggleBtn.textContent = darkMode ? '🌙' : '☀️';
+    });
+
+    // Subtle fade-in animation on scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Project Details Modal
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDetails = document.getElementById('modal-details');
+    const modalLink = document.getElementById('modal-link');
+    const closeBtn = document.querySelector('.close-btn');
+    document.querySelectorAll('.details-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const card = this.closest('.project-card');
+        modalTitle.textContent = card.dataset.title;
+        modalDetails.textContent = card.dataset.details;
+        modalLink.href = card.dataset.link;
+        modal.style.display = 'block';
+        setTimeout(() => modal.classList.add('show'), 10);
+      });
+    });
+    closeBtn.onclick = function() {
+      modal.classList.remove('show');
+      setTimeout(() => modal.style.display = 'none', 300);
+    };
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.style.display = 'none', 300);
+      }
+    };
+
+    // Contact form functionality (using Formspree demo)
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const status = document.getElementById('form-status');
+      status.textContent = "Sending...";
+      fetch('https://formspree.io/f/xwpojkqr', {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          status.textContent = "Thank you! Your message has been sent.";
+          this.reset();
+        } else {
+          status.textContent = "Oops! There was a problem. Please try again.";
+        }
+      }).catch(() => {
+        status.textContent = "Oops! There was a problem. Please try again.";
+      });
+    });
+  </script>
+</body>
+</html>
